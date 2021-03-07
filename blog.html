@@ -15,6 +15,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="css\style.css" />
+    <script src="greetings.js" defer></script>
     <link rel="shortcut icon" href="#"> <!--? why-->
     <title>Accueil</title>
     </head>
@@ -82,8 +83,23 @@
                 </div>
             </nav>
         </header>
+        <section class="greetings">
+            <h1>Our website</h1>
+            <form id="greetings">
+                <div class="remember">
+                    <label for="entername">Enter your name:</label>
+                    <input id="entername" type="text" required>
+                    <input id="submitname" type="submit" value="Say hello">
+                </div>
+                <div class="forget">
+                    <label for="forgetname">Want me to forget you?</label>
+                    <input id="forgetname" type="reset" value="Forget">
+                </div>
+            </form>
+        </section>
         <div id="wrapperInterface">
             <div class="blog">
+                <p class="personal-greeting">Welcome to our website.</p>
                 <h2>Nouvel Article</h2>
                 <div class="creation d-flex flex-column">
                     <label for="titre">Titre :</label>

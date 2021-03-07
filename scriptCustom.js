@@ -35,8 +35,11 @@ titreInput.addEventListener("change", function() {
     //// titreInput.style.opacity = 0; <-FONCTIONNE
     //! comment changer le contenu de titre ?
     
-    title.textContent = titreInput; //? donne "object element input"
+    title.textContent = titreInput; //? donne "object element input" problème au niveau capture title
+//? voir comment j'avais capturé name/repname
 });
+
+//! prévoir de sauvegarder un fichier .txt si le site bug !
 
 // titleInput.addEventListener("click", function() {
 //     publierArticle.style.color = "#DDD";
