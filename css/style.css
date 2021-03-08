@@ -54,4 +54,19 @@ header {
   .blog .card:hover > .card-footer {
     background-color: rgba(65, 63, 189, 0.3); }
 
+#forgetname {
+  outline: none; }
+
+input, textarea {
+  outline: 1px solid #413fbd;
+  border: none; }
+  input:focus, textarea:focus {
+    outline: 1px solid #f75d04;
+    border: none; }
+
+#article {
+  height: 26px; }
+  #article:focus {
+    height: 300px; }
+
 /*# sourceMappingURL=style.css.map */

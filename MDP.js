@@ -53,8 +53,8 @@ submit.addEventListener('click', function() {
     //   mailDisplayCheck();
 });
 
-console.log('pass :' +localStorage.getItem('pass'));
-console.log('mail :' + localStorage.getItem('mail'));
+console.log('pass : ' +localStorage.getItem('pass'));
+console.log('mail : ' + localStorage.getItem('mail'));
 
 
 // define the nameDisplayCheck() function
@@ -74,8 +74,8 @@ function DisplayCheck() {
     //! bloquer vers reset
     // resetMDP.style.display = 'block';
     // changePass.style.display = 'block';
-    console.log(passInput.value);
-    console.log(mailInput.value);
+    console.log('pass : ' + passInput.value);
+    console.log('mail : ' + mailInput.value);
     // console.log(mail);
 } else {
     // if not, display generic greeting

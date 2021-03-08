@@ -6,9 +6,12 @@ newArticle.innerHTML =
 "<div><h2>Titre</h2><div><p><strong>Résumé :</strong></p><p>contenuRésumé</p></div><p>ContenuArticle</p><p>Date</p></div>";
 
 //on ajoute structure à la fin
-wrapperBlog.appendChild(newArticle); //? comment gérer la mise en page ?
- 
+wrapperBlog.appendChild(newArticle); //? comment gérer la mise en page ? 
+
 //dans blog, on récupère les éléments de la structure
+let wrapperInterface = document.getElementById('wrapperInterface');
+let otherArticle = document.getElementById('otherArticle');
+
 let title = newArticle.querySelector("h2"); //? ça récupère <h2>Titre</h2>, est-ce qu'il ne faudrait pas récupérer juste Titre ?
 let paragraphes = newArticle.getElementsByTagName("p");
 let resume = paragraphes[0];
@@ -45,21 +48,33 @@ titreInput.addEventListener("change", function() {
 //     publierArticle.style.color = "#DDD";
 // })
 
-// //Quand on clique sur le bouton
-// publierArticle.addEventListener("click", function() {
+//Quand on clique sur le bouton
+otherArticle.style.display = 'none';
+publierArticle.addEventListener("click", function() {
 
-//     //et on update title
-//     titleInput.addEventListener("change", function() {
-//         title = titleInput.textContent;
-//     });
+    //faire disparaître interface de création
+    wrapperInterface.style.display = 'none'; //?why fonctionne pas ?
+    //changer contenu de paragraphe personnal greeting
+    let name = localStorage.getItem('name');
+    personalGreeting.textContent = 'Un autre article, ' + name + ' ?';
+    //faire apparaitre bouton
+    otherArticle.style.display = 'block';
+
+
+
+});
+
+
+function updateTexte(textInput, text) {
+
+    textInput
+    text.textContent
+}
+titleInput.addEventListener ('change', function() {
     
-//     titleInput = 3;
-//     titleInput.textContent = "4";
-//     console.log(titleInput.textContent);
-//     console.log(title);
-// });
+});
 
-
+title.up
 // const name = document.getElementById("name");
 // const repname = document.getElementById("repname");
 
@@ -68,3 +83,11 @@ titreInput.addEventListener("change", function() {
 // function updateValue(e) {
 // 	repname.textContent = e.target.value;
 // }
+
+
+otherArticle.addEventListener('click', function() {
+    //faire réapparaître interface de création et disparaître bouton
+    wrapperInterface.style.display = 'block';
+    otherArticle.style.display = 'none';
+
+})

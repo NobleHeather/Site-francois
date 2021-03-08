@@ -39,6 +39,7 @@ submitBtn.addEventListener('click', function() {
   localStorage.setItem('name', nameInput.value);
   // run nameDisplayCheck() to sort out displaying the personalised greetings and updating the form display
   nameDisplayCheck();
+  personalGreeting.style.opacity = 1;
 });
 
 // run function when the 'changer' button is clicked
@@ -57,17 +58,18 @@ function nameDisplayCheck() {
     // If it is, display personalized greeting
     let name = localStorage.getItem('name');
     titreInterface.textContent = 'Bienvenue dans l\'interface, ' + name;
-    personalGreeting.textContent = 'Prêt à commencer, ' + name + '?';
+    personalGreeting.textContent = 'Prêt à publier un nouvel article, ' + name + '?';
     // hide the 'remember' part of the form and show the 'forget' part
     forgetDiv.style.display = 'block';
     rememberDiv.style.display = 'none';
-  } else {
+} else {
     // if not, display generic greeting
     titreInterface.textContent = 'Bienvenue dans l\'interface, je m\'appelle Heather';
     // personalGreeting.textContent = 'Prêt à commencer, illustre inconnu·e ?';
     // hide the 'forget' part of the form and show the 'remember' part
     forgetDiv.style.display = 'none';
     rememberDiv.style.display = 'block';
+    personalGreeting.display = 'none';
   }
 }
 

@@ -15,7 +15,6 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="css\style.css" />
-    <script src="greetings.js" defer></script>
     <link rel="shortcut icon" href="#"> <!--? why-->
     <title>Accueil</title>
     </head>
@@ -83,7 +82,7 @@
                 </div>
             </nav>
         </header>
-        <section class="greetings">
+        <!-- <section class="greetings">
             <h1>Our website</h1>
             <form id="greetings">
                 <div class="remember">
@@ -96,12 +95,35 @@
                     <input id="forgetname" type="reset" value="Forget">
                 </div>
             </form>
-        </section>
+        </section> -->
+        <div class="salutations">
+            <h2 id="titreInterface">Bienvenue dans l'interface, je m'appelle Heather</h2>
+            <!-- <section id="motDePasse">
+                <label for="enterpass">Entrez votre mot de passe : </label>
+                <input id="enterpass" type="text" required />
+                <input id="submitpass" type="submit" value="accéder" />
+            </section> -->
+            <section class="greetings">
+                <form id="greetings">
+                    <div class="remember">
+                        <label for="entername">Quel est votre nom ?</label>
+                        <input id="entername" type="text" required />
+                        <input id="submitname" type="submit" value="choisir" />
+                    </div>
+                <div class="forget">
+                    <label for="forgetname">Changer de nom d'utilisateur ?</label>
+                    <input class="btn btn-primary" id="forgetname" type="reset" value="Changer" />
+                </div>
+                </form>
+                <p class="personal-greeting"></p>
+                <button class="btn btn-primary" id="otherArticle">Ok !</button>
+            </section>
+        </div>
         <div id="wrapperInterface">
             <div class="blog">
-                <p class="personal-greeting">Welcome to our website.</p>
+                <!-- <p class="personal-greeting">Prêt à écrire un nouvel article ?</p> -->
                 <h2>Nouvel Article</h2>
-                <div class="creation d-flex flex-column">
+                <div id="creation" class="d-flex flex-column">
                     <label for="titre">Titre :</label>
                     <input type="text" name="titre" id="titreInput" required>
 
@@ -109,12 +131,14 @@
                     <input type="text" name="resume" id="resume" required>
 
                     <label for="article">Article :</label>
-                    <input type="text" name="article" id="article" required>
+                    <!-- <input type="textarea" name="article" id="article" required> -->
+                    <textarea id="article" name="article" rows="10"></textarea>
 
                     <label for="date">Date :</label>
                     <input type="text" name="date" id="date" required>
+                    <button id="publierArticle" type="button" class="btn btn-primary mt-4 w-25">Publier</button>
                 </div>
-                <button id="publierArticle" type="button" class="btn btn-primary mt-4">Publier</button>
+                
             </div>
         </div>
         <div id="wrapperBlog" class="d-flex flex-column">
@@ -172,6 +196,7 @@
       crossorigin="anonymous"
     ></script>
 
-        <script src="scriptCustom.js" type="text/javascript"></script>
+        <script src="salutations.js" type="text/javascript"></script>
+        <script src="interface.js" type="text/javascript"></script>
     </body>
 </html>

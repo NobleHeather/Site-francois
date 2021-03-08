@@ -26,7 +26,8 @@ button {
 $color : (
     "primary" : rgb(65, 63, 189),    
     "secondary" : #DDD,
-    "dark" : #000
+    "dark" : #000,
+    "focus" : rgb(247, 93, 4)
 );
 body {
     padding: 0 15px;
@@ -133,3 +134,27 @@ header {
 // .news {
 //     grid-area: news;
 // }
+
+
+//// BLOG
+
+//* interface
+
+#forgetname {
+    outline: none;
+}
+
+input, textarea {
+    outline: 1px solid map-get($color, primary);
+    border: none;
+    &:focus {
+        outline : 1px solid (map-get($color, focus));
+        border: none;
+    }
+}
+#article {
+    height: 26px; //définir autrement
+    &:focus {
+        height: 300px;
+    }
+}

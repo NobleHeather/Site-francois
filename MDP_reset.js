@@ -9,7 +9,7 @@ const resetMDP = document.querySelector('.resetMDP');
 const mailPass = document.querySelector('#mailpass');
 
 
-console.log(localStorage.getItem('pass'));
+console.log('votre mot de passe est : ' +localStorage.getItem('pass'));
 // Stop the form from submitting when a button is pressed
 formReset.addEventListener('submit', function(e) {
     e.preventDefault();
@@ -20,11 +20,12 @@ formReset.addEventListener('submit', function(e) {
 
 // run function when the 'submit2' button is clicked
 submit2.addEventListener('click', function() {
-    console.log('allo?');
-    if (oldPass == localStorage.getItem('pass')) { //!test pas local storage ? ou alors problème sur oldPass ?
+    console.log('ancien mot de passe : ' + oldPass.value);
+    let localPass = localStorage.getItem('pass');
+    if (oldPass.value == localPass) { //!test pas local storage ? ou alors problème sur oldPass ?
         localStorage.removeItem('pass');
         localStorage.setItem('pass', newPass.value);
-        console.log('changement pass ok');
+        console.log('nouveau mot de passe : ' + newPass.value);
     } else {
         console.log('erreur changement mdp');
     }   
