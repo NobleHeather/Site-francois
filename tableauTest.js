@@ -1,16 +1,16 @@
 ////FONCTIONNE
-let tabTitles = []; //tableau avec tous les titres + leurs numéro
+let tabContenu = []; //tableau avec tous les titres + leurs numéro
 let num = 0; //numéro du titre
 
 //fonction pour ajouter un nouveau titre dans le tableau des titres
-function AjouteTitre(key, title) {
+function AjouteContenu(key, texte) {
 // console.log("clé=" + key + " ,titre=" + title);
 //ajoute un objet avec titre + index dans le tableau des titres
 let obj = {};
-obj[key] = title;
-tabTitles.push(obj);
+obj[key] = texte;
+tabContenu.push(obj);
 // stock l'objet dans local storage
-localStorage.setItem("newObject", JSON.stringify(tabTitles));
+localStorage.setItem("newObject", JSON.stringify(tabContenu));
 // récupère l'objet depuis local storage
 let retrievedObject = localStorage.getItem("newObject");
 // console.log("retrievedObject: ", JSON.parse(retrievedObject));
@@ -18,18 +18,18 @@ let retrievedObject = localStorage.getItem("newObject");
     for (let [key, value] of Object.entries(obj)) {
         console.log(`${key}: ${value}`);
         //cible juste l'index
-        let JustKey = `${key}`;
-        console.log(JustKey);
+        let justKey = `${key}`;
+        console.log(justKey);
         //numérote le nouveau titre avec l'index disponible directement supérieur
-        num = parseInt(JustKey) + 1;
+        num = parseInt(justKey) + 1;
     }
 
 }
 
-AjouteTitre("1", "NouveauTitre");
-AjouteTitre(num, "NouveauTitre2");
-AjouteTitre(num, "NouveauTitre3");
-AjouteTitre(num, "NouveauTitre4");
+AjouteContenu("1", "NouveauTitre");
+AjouteContenu(num, "NouveauTitre2");
+AjouteContenu(num, "NouveauTitre3");
+AjouteContenu(num, "NouveauTitre4");
 
 ////JUSQUE LA
 

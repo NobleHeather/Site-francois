@@ -34,6 +34,7 @@ let dateInput = document.getElementById('dateInput');
 // dateInput.style.opacity = 0;
 let articleInput = document.getElementById('articleInput');
 // articleInput.style.opacity = 0;
+let enregistrerArticle = document.getElementById("enregistrerArticle");
 let publierArticle = document.getElementById("publierArticle");
 
 // title = "titre";
@@ -68,8 +69,7 @@ creation.addEventListener('submit', function(e) { //? ça fait quoi ça en fait 
 //cacher le bouton "ajouter un nouvel article"
 otherArticle.style.display = 'none';
 
-//*AJOUTER UN NOUVEAU CONTENU
-//! exactement le même code que dans tableauTest.js, où est le problème ?
+//*AJOUTER UN NOUVEAU CONTENU DANS LOCAL STORAGE
 let tabContenu = []; //tableau avec tous les titres + leurs numéro
 let num = 0; //numéro du titre
 // let justKey = " ";
@@ -92,19 +92,57 @@ let retrievedObject = localStorage.getItem("newObject");
         //cible juste l'index
         let justKey = `${key}`;
         // let justValue = `${value}`;
-        console.log(JustKey);
-        // console.log(JustValue);
+        // console.log(justKey);
         //numérote le nouveau titre avec l'index disponible directement supérieur
         num = parseInt(justKey) + 1;
-        
     }
+    //ici on a tabContenu qui contient (index + input) * 4  
+    console.log('index + input :' + retrievedObject); //= tabContenu dans storage
+}
+let newObject = localStorage.getItem("newObject");
+console.log('index + input :' + newObject); //= tabContenu dans storage
+
+let publication = []; //tab pour stocker les articles
+let retrievedPublication = localStorage.getItem("newPublication");
+
+function AjoutePublication(index, tab) {
+
+    i = 0;
+    while (i < publication.length) {
+        console.log(i);
+        if (i != null) { //case remplie
+            i++;
+        } else { //remplir case
+            //met le tableau contenant l'article en entier dans une case du tableau publication
+            publication.push(newObject);
+            console.log(publication);
+            i++;
+            //! stocker dans storage de manière à avoir :
+            //! publication[article, article, article]
+
+        }
+    }
+    
 }
 
-AjouteContenu (num, "yo"); 
-AjouteContenu (num, "yoo"); 
+//quand on clique sur bouton publier un article, fonction se lance
+publierArticle.addEventListener('click', function() {
+    
+    AjoutePublication(?, newObject) // '?' doit être l'article. newObject ?
+
+});
+// AjouteContenu (num, "yo"); 
+// AjouteContenu (num, "yoo"); 
 //* JUSQUE ICI
 
-publierArticle.addEventListener("click", function() {
+////Donc on peut mettre un tableau dans un tableau dans localStorage
+let tabTest = ["case1", ["case inception"], "case2"];
+localStorage.setItem("tabTest", JSON.stringify(tabTest));
+let retTabTest = localStorage.getItem("tabTest");
+// console.log(retTabTest);
+////fin du test "flemme-de-lire-la-doc"
+
+enregistrerArticle.addEventListener("click", function() {
 
     //*FONCTIONNE
     // //faire disparaître interface de création
@@ -122,23 +160,53 @@ publierArticle.addEventListener("click", function() {
     //     console.log('erreur');
     // }
 
-    // localStorage.setItem('title', titleInput.value);
-    // localStorage.setItem('resume', resumeInput.value);
-    // localStorage.setItem('article', articleInput.value);
-    // localStorage.setItem('date', dateInput.value);
-    
-    // title.textContent = localStorage.getItem('title');
-    // resume.textContent = localStorage.getItem('resume');
-    // article.textContent = localStorage.getItem('article');
-    // date.textContent = localStorage.getItem('date');
-    
-    // console.log('title : ' + title);
-    // console.log('resume : ' + resume);
-    // console.log('article : ' + article);
-    // console.log('date : ' + date);
+    // let tabPublication = []; //tableau avec tous les titres + leurs numéro
+    // let i = 0; //numéro du titre
+
+    //fonction pour ajouter un nouveau titre dans le tableau des titres
+    // function AjoutePublication(index, tableau) {
+    // // console.log("clé=" + key + " ,titre=" + title);
+    // //ajoute un objet avec titre + index dans le tableau des titres
+    //     let obj = {};
+    //     obj[index] = tableau;
+    //     tabPublication.push(obj);
+    //     // stock l'objet dans local storage
+    //     localStorage.setItem("newTableau", JSON.stringify(tabPublication));
+    //     // récupère l'objet depuis local storage
+    //     let returnedObject = localStorage.getItem("newTableau");
+    //     for (let [key, value] of Object.entries(obj)) {
+    //         console.log(`${key}: ${value}`);
+    //         //cible juste l'index
+    //         let justKey = `${key}`;
+    //         i = parseInt(justKey) + 1;
+    //     }
+    // }
 
     // AjouteContenu("num", "titleInput.value");
-    // AjouteContenu(num, dateInput.value);
+    // AjoutePublication(i, AjouteContenu(num, titleInput.value));
+
+    // let Publication = [];
+    // AjouteContenu(num, titleInput.value);
+    // let PublicationTitre = 
+    // Publication.push[PublicationTitre];
+
+    AjouteContenu(num, titleInput.value);
+    AjouteContenu(num, resumeInput.value);
+    AjouteContenu(num, dateInput.value);
+    // let thisTitle = AjouteContenu(num, titleInput.value);
+    // let thisResume = AjouteContenu(num, resumeInput.value);
+    // let thisArticle = AjouteContenu(num, articleInput.value);
+    // let thisDate = AjouteContenu(num, dateInput.value);
+    // let thisPublication = [];
+    // thisPublication.push(thisTitle);
+    // thisPublication.push(thisResume);
+    // thisPublication.push(thisArticle);
+    // thisPublication.push(thisDate);
+    // console.log(thisPublication);
+    
+    // console.log(publication);
+
+
     // title.textContent = 
     // AjouteContenu ("2", "yooo"); 
 
