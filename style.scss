@@ -140,7 +140,7 @@ header {
 
 //* interface
 
-#forgetname {
+#forgetname, #publierArticle {
     outline: none;
 }
 
@@ -152,7 +152,7 @@ input, textarea {
         border: none;
     }
 }
-#article {
+#articleInput {
     height: 26px; //définir autrement
     &:focus {
         height: 300px;
