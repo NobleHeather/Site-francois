@@ -1,6 +1,10 @@
 body {
   padding: 0 15px; }
 
+h1 {
+  box-shadow: 10px -10px 0px 0px #413FBD;
+  color: #fff; }
+
 h2 {
   border-bottom: 3px solid #413fbd;
   padding-bottom: 5px; }
@@ -53,6 +57,18 @@ header {
     color: white; }
   .blog .card:hover > .card-footer {
     background-color: rgba(65, 63, 189, 0.3); }
+
+.imgFooter {
+  height: 120px; }
+
+.allo {
+  border: 1px solid #000; }
+
+footer {
+  background-color: #DDD;
+  height: 120px; }
+  footer > a svg {
+    width: 20px; }
 
 #forgetname, #publierArticle {
   outline: none; }
