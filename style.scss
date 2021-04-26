@@ -23,6 +23,7 @@ button {
 .partie1 {
     // border: 1px solid orange;
 }
+
 $color : (
     "primary" : rgb(65, 63, 189),    
     "secondary" : #DDD,
@@ -31,10 +32,21 @@ $color : (
 );
 body {
     padding: 0 15px;
+    max-width: 1440px;
+    margin: 0 auto;
 }
 h1 {
+    font-size: 2em;
     box-shadow: 10px -10px 0px 0px #413FBD;
     color: #fff;
+    @media (max-width : 375px) {
+        font-size: 1.5em;
+    }
+}
+.blogTitle {
+    color: map-get($color, dark);
+    box-shadow: none;
+    border: 3px solid map-get($color, primary)
 }
 h2 { //keyframe avec bordure qui tourne ?
                                         // outline: 1px salmon solid;
@@ -103,6 +115,14 @@ header {
         }
     }
 }
+
+#deck1 > div {
+    border: 1px solid #000;
+    width: 50%;
+    @media (max-width : 767px) {
+        width : 100%;
+    }
+}
 .blog .card {
     max-width: 300px;
     &:hover > .card-header {
@@ -119,17 +139,40 @@ header {
 }
 .imgFooter {
     // border: 1px solid #000;
-    height: 120px;
+    height: 70px;
 }
 .allo {
-    border: 1px solid #000;
+    // border: 1px solid #000;
 }
 footer {
+    // border: 1px solid #000;
     background-color: map-get($color, secondary);
-    height: 120px;
+    height: 70px;
     > a svg {
         // height: 20px;
         width: 20px;
+    }
+}
+
+//* INTERFACE
+
+.badge {
+    font-size: 0.7em;
+    padding: 7px 15px 0 15px; 
+    transition: 300ms;
+    &--red {
+        padding: 5px 12px 0 12px;
+    }
+    &:hover {
+        cursor: pointer;
+        transform: scale(0.8);
+    }
+}
+
+.salutations svg, #wrapperInterface svg {
+    max-height: 50px;
+    &:active {
+        color: map-get($color, focus);
     }
 }
 

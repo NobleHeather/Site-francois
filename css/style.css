@@ -1,9 +1,20 @@
 body {
-  padding: 0 15px; }
+  padding: 0 15px;
+  max-width: 1440px;
+  margin: 0 auto; }
 
 h1 {
+  font-size: 2em;
   box-shadow: 10px -10px 0px 0px #413FBD;
   color: #fff; }
+  @media (max-width: 375px) {
+    h1 {
+      font-size: 1.5em; } }
+
+.blogTitle {
+  color: #000;
+  box-shadow: none;
+  border: 3px solid #413fbd; }
 
 h2 {
   border-bottom: 3px solid #413fbd;
@@ -50,6 +61,13 @@ header {
     .bio .texte > img:nth-child(3), .bio .texte > img:nth-child(7) {
       float: right; }
 
+#deck1 > div {
+  border: 1px solid #000;
+  width: 50%; }
+  @media (max-width: 767px) {
+    #deck1 > div {
+      width: 100%; } }
+
 .blog .card {
   max-width: 300px; }
   .blog .card:hover > .card-header {
@@ -59,16 +77,28 @@ header {
     background-color: rgba(65, 63, 189, 0.3); }
 
 .imgFooter {
-  height: 120px; }
-
-.allo {
-  border: 1px solid #000; }
+  height: 70px; }
 
 footer {
   background-color: #DDD;
-  height: 120px; }
+  height: 70px; }
   footer > a svg {
     width: 20px; }
+
+.badge {
+  font-size: 0.7em;
+  padding: 7px 15px 0 15px;
+  transition: 300ms; }
+  .badge--red {
+    padding: 5px 12px 0 12px; }
+  .badge:hover {
+    cursor: pointer;
+    transform: scale(0.8); }
+
+.salutations svg, #wrapperInterface svg {
+  max-height: 50px; }
+  .salutations svg:active, #wrapperInterface svg:active {
+    color: #f75d04; }
 
 #forgetname, #publierArticle {
   outline: none; }
