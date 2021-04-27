@@ -2,8 +2,11 @@
 
 ---PROBLEMES---
 Problème avec la fonction DeleteArticle dans interfaceV2.js
+Si on actualise la page, on revient sur la page de mot de passe (voir cette histoire de token)
 
 ---A FAIRE---
+Faire un lien pour accéder au site depuis l'interface
+Effacer tous les pass inutiles des UserA, UserF et UserB
 Classer les articles par idDate
 Faire une page blog pour le public # de l'interface
 Système d'authentification pour accès interface

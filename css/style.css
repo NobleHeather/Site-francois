@@ -95,10 +95,28 @@ footer {
     cursor: pointer;
     transform: scale(0.8); }
 
-.salutations svg, #wrapperInterface svg {
-  max-height: 50px; }
-  .salutations svg:active, #wrapperInterface svg:active {
+.heather svg {
+  max-height: 50px;
+  color: #000; }
+  .heather svg:hover {
+    cursor: pointer;
+    color: #413fbd; }
+  .heather svg:active {
     color: #f75d04; }
+
+#motDePasse {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  position: relative; }
+  #motDePasse > div {
+    position: absolute;
+    top: 40%; }
+
+#wrapper {
+  display: none; }
 
 #forgetname, #publierArticle {
   outline: none; }

@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt');
 const Article = require('./models/article');
+const Pass = require('./models/pass');
 const mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://NobleHeather:NHOC2021@cluster0.tupk8.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
   { useNewUrlParser: true,
@@ -27,7 +29,22 @@ app.post('/api/article', (req, res, next) => {
     article.save()
       .then(() => res.status(201).json({ message: 'Article enregistré !', article : article}))
       .catch(error => res.status(400).json({ error }));
-  });
+});
+
+// MDP POST
+app.post('/api/pass', (req, res, next) => {
+    bcrypt.hash(req.body.password, 10)
+    .then(hash => {
+        const pass = new Pass({
+            name: req.body.name,
+            password : hash
+        });
+        pass.save()
+            .then(() => res.status(201).json({ message: 'Pass créé !', pass: pass}))
+            .catch(error => res.status(400).json({ error }));
+    })
+    .catch(error => res.status(500).json({ error }));
+});
 
 // GET
 app.use('/api/article', (req, res, next) => {
@@ -43,6 +60,26 @@ app.get('/api/article/:id', (req, res, next) => {
       .then(thing => res.status(200).json(thing))
       .catch(error => res.status(404).json({ error }));
   });
+
+//MDP get 1
+app.post('/api/pass/checkpass', (req, res, next) => { //? api.get & api/pass/:id
+    Pass.findOne({ name: req.body.name })
+      .then(pass => {
+          bcrypt.compare(req.body.password, pass.password)
+            .then(valid => {
+                if(!valid) {
+                    return res.status(401).json({ error: 'Mot de passe incorrect !'});
+                }
+                res.status(200).json({
+                    passId: pass._id,
+                    token: 'TOKEN'
+                });
+            })
+            .catch(error => res.status(500).json({ error }));
+      })
+      .catch(error => res.status(500).json({ error }));
+
+});
 
 // MODIFIER
 //* Possible de trouver via nom ?
