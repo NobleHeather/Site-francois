@@ -7,6 +7,9 @@ section html password + link script & script password.js temporairement désacti
 mot de passe actuel est password et compare avec nom Usertemp dans password.js
 <!-- !! -->
 
+<!-- ? -->
+HEROKU : enlever les nodes modules avant de push !
+
 ---PROBLEMES---
 <!-- Problème avec la fonction DeleteArticle dans interfaceV2.js -->
 Si on actualise la page, on revient sur la page de mot de passe (voir cette histoire de token)
