@@ -46,13 +46,6 @@ app.post('/api/pass', (req, res, next) => {
     .catch(error => res.status(500).json({ error }));
 });
 
-// GET
-app.use('/api/article', (req, res, next) => {
-Article.find()
-    .then(things => res.status(200).json(things))
-    .catch(error => res.status(400).json({ error }));
-});
-
 // GET only one
 //* Possible ici de trouver via nom ?
 app.get('/api/article/:id', (req, res, next) => {
@@ -93,6 +86,13 @@ app.delete('/api/article/:id', (req, res, next) => {
     Article.deleteOne({ _id: req.params.id })
       .then(() => res.status(200).json({ message: 'Article supprimé !'}))
       .catch(error => res.status(400).json({ error }));
+});
+
+// GET
+app.use('/api/article', (req, res, next) => {
+    Article.find()
+        .then(articles => res.status(200).json(articles))
+        .catch(error => res.status(400).json({ error }));
 });
 
 module.exports = app;

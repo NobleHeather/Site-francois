@@ -94,3 +94,39 @@ function EnterBlog() {
     passDiv.style.display = "none";
     blogPage.style.display = "block";
 }
+
+//! TEMPORAIRE
+// function StoragePass(x) {
+//     let pass = 31031951;
+//     localStorage.setItem("pass", JSON.stringify(x));
+// }
+// let pass = JSON.parse(localStorage.getItem("pass"));
+
+// //? impossible d'effacer ces putains de mots de pass, que se passe-t-il ???
+// //! temporaire
+// const fetchFiche = async function() {
+//     return await fetch('http://localhost:3000/api/pass')
+//     .then(response => response.json())
+//     .then(json => {
+//         console.log(json);
+//         // console.log(json[2]._id);
+//         // let x = json[2]._id;
+//         // deleteFiche(x);
+//     })
+//     .catch((e) => console.log(e))
+// }
+// fetchFiche();
+
+// function deleteArticle() {
+//     // let x = 6086ffc1bc7b7b149cbe8153;
+//     let thisUrl = `http://localhost:3000/api/pass/6087c1364a9ea33370522be7`;
+//     console.log(thisUrl);
+//     fetch(thisUrl, {
+//         method: "DELETE"
+//     })
+//     .then(response => response.json())
+//     .then(json => console.log(json));
+// }
+// deleteArticle();
+
+//!

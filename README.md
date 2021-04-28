@@ -1,4 +1,7 @@
 <!-- Possible d'ajouter un <br/> quand l'utilisateur clique sur entrée ? YEP -->
+<!-- !! -->
+section html password & script password.js temporairement désactivés
+<!-- !! -->
 
 ---PROBLEMES---
 Problème avec la fonction DeleteArticle dans interfaceV2.js

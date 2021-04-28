@@ -21,7 +21,6 @@ const DeleteArticle = async function(articleId) {
     console.log(articleId);
     let thisUrl = `http://localhost:3000/api/article/${articleId}`;
     console.log(thisUrl);
-    // let thisUrl = `https://memory-piafs.herokuapp.com/api/fiche/${thisId}`;
     fetch(thisUrl, {
         method: "DELETE"
     })
@@ -47,14 +46,14 @@ function DisplayBlog(json) {
 
         let date;
         if (json[i].date != null) {
-            date = json[1].date.split('T');
+            date = json[i].date.split('T');
             date = date[0];
         } else {
             date = '';
         }
 
         newArticle.innerHTML = 
-        `<div><h2><span>!</span>${json[i].title}<span>x</span></h2><div></div><div><p><strong>Résumé : </strong>${json[i].resume}</p></div><p>${json[i].body}</p><p>${date}</p></div>`;
+        `<h2><span>!</span>${json[i].title}<span>x</span></h2><div><p><strong>Résumé : </strong>${json[i].resume}</p></div><p>${json[i].body}</p><p>${date}</p>`;
         
         let p = newArticle.querySelectorAll('p');
         p[0].setAttribute('class', 'col-8 m-auto text-center mt-2 mb-3');
@@ -108,6 +107,8 @@ let titleInput = document.getElementById('titreInput');
 let resumeInput = document.getElementById('resumeInput');
 // resumeInput.style.opacity = 0;
 let dateInput = document.getElementById('dateInput');
+//* par défaut on initialise à la date du jour
+dateInput.valueAsDate = new Date();
 // dateInput.style.opacity = 0;
 let articleInput = document.getElementById('articleInput');
 // articleInput.style.opacity = 0;
@@ -138,6 +139,10 @@ modifierArticle.style.display = 'none';
 function SaveArticle() {
     console.log('SAVE ARTICLE');
 
+    //* on réinitialise Heather
+    heatherBlogDiv.style.opacity = '0';
+    heatherBlogText.innerHTML = '';
+
     let article = {
         title : titleInput.value,
         resume : resumeInput.value,
@@ -158,8 +163,9 @@ function AfficheBrouillon(article) {
 
     let newArticle = document.createElement("div");
 
+    newArticle.setAttribute('class', 'border border-primary p-5 mt-5');
     newArticle.innerHTML = 
-    `<div><h2>${article.title}</h2><div><p><strong>Résumé : </strong>${article.resume}</p></div><p>${article.body}</p><p>${article.date}</p></div>`;
+    `<h2>${article.title}</h2><div><p><strong>Résumé : </strong>${article.resume}</p></div><p>${article.body}</p><p>${article.date}</p>`;
     // console.log(newArticle);
 
     //on ajoute structure à la fin
@@ -249,10 +255,18 @@ const PostArticle = async function(article) {
 
 enregistrerArticle.addEventListener('click', function(e) {
     e.preventDefault();
-    publierArticle.style.display = "block";
-    enregistrerArticle.style.display = "none";
-    const article = SaveArticle();
-    AfficheBrouillon(article);
+    //* cf heather.js pour verifForm()
+    if (verifForm()) {
+        console.log('verif form true');
+        //* On échange les boutons
+        publierArticle.style.display = "block";
+        enregistrerArticle.style.display = "none";
+        
+        const article = SaveArticle();
+        AfficheBrouillon(article);
+    } else {
+        console.log(`verif form false`);
+    }
 });
 
 modifierArticle.addEventListener('click', function(e) {
@@ -318,7 +332,7 @@ let livre = []
 
 localStorage.setItem("publication", JSON.stringify(publication));
 var test = JSON.parse(localStorage.getItem("publication"));
-console.log("publication avant boucle" + test);
+// console.log("publication avant boucle" + test);
 
 //quand on clique sur bouton publier un article, fonction se lance
 publierArticle.addEventListener('click', function() {

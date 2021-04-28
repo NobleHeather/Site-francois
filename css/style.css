@@ -85,18 +85,22 @@ footer {
   footer > a svg {
     width: 20px; }
 
-.badge {
+h2 > .badge {
   font-size: 0.7em;
   padding: 7px 15px 0 15px;
   transition: 300ms; }
-  .badge--red {
+  h2 > .badge--red {
     padding: 5px 12px 0 12px; }
-  .badge:hover {
+  h2 > .badge:hover {
     cursor: pointer;
     transform: scale(0.8); }
 
+.heather > p span {
+  text-decoration: underline 2px #413fbd;
+  font-size: 1.1em;
+  font-weight: bold; }
 .heather svg {
-  max-height: 50px;
+  width: 70px;
   color: #000; }
   .heather svg:hover {
     cursor: pointer;
@@ -117,6 +121,11 @@ footer {
 
 #wrapper {
   display: none; }
+
+#wrapperBlog div p span, .visualisation div p span {
+  text-decoration: underline 2px #413fbd;
+  font-size: 1.1em;
+  font-weight: bold; }
 
 #forgetname, #publierArticle {
   outline: none; }

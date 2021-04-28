@@ -55,6 +55,8 @@ h2 { //keyframe avec bordure qui tourne ?
 }
 h3 {
     font-size: 1.1em;
+    // color:red;
+
 }
 .stretched-link {
     color: #000;
@@ -155,23 +157,33 @@ footer {
 }
 
 //* INTERFACE
+h2 {
+    > .badge {
+        font-size: 0.7em;
+        padding: 7px 15px 0 15px; 
+        transition: 300ms;
+        &--red {
+            padding: 5px 12px 0 12px;
+        }
+        &:hover {
+            cursor: pointer;
+            transform: scale(0.8);
+        }
+    }
 
-.badge {
-    font-size: 0.7em;
-    padding: 7px 15px 0 15px; 
-    transition: 300ms;
-    &--red {
-        padding: 5px 12px 0 12px;
-    }
-    &:hover {
-        cursor: pointer;
-        transform: scale(0.8);
-    }
 }
 
 .heather {
+    > p span {
+        text-decoration: underline 2px map-get($color, primary);
+        font-size: 1.1em;
+        font-weight: bold;
+    }
     svg {
-        max-height: 50px;
+        // max-height: 50px;
+        // min-height: 30px;
+        // border: 1px solid #000;
+        width: 70px;
         color: map-get($color, dark);
         &:hover {
             cursor: pointer;
@@ -205,6 +217,11 @@ footer {
 }
 #wrapper {
     display: none;
+}
+#wrapperBlog div p span, .visualisation div p span { //* sous-titre dans le corps de input textarea
+    text-decoration: underline 2px map-get($color, primary);
+    font-size: 1.1em;
+    font-weight: bold;
 }
 // .grid {							
 //         border: 2px solid purple;
