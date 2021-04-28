@@ -5,11 +5,9 @@ let btnInput = document.getElementById('submitpass');
 let blogPage = document.getElementById('wrapper');
 
 //* Si on valide le mot de passe avec entrer
-passInput.addEventListener('keyup', function(e) {
-    e.preventDefault();
-    heatherPassClear();
-
-    if (e.keyCode === 13) {
+passInput.addEventListener('keydown', function(e) {
+    // e.preventDefault();
+    if (e.key == 'Enter') {
         console.log('KEYUP PASS');
         let pass = passInput.value;
         console.log(pass);
@@ -18,6 +16,21 @@ passInput.addEventListener('keyup', function(e) {
         ComparePass(pass);
     }
 });
+
+//! deprecated
+// passInput.addEventListener('keyup', function(e) {
+//     e.preventDefault();
+//     heatherPassClear();
+
+//     if (e.keyCode === 13) {
+//         console.log('KEYUP PASS');
+//         let pass = passInput.value;
+//         console.log(pass);
+
+//         // PostPass(pass);
+//         ComparePass(pass);
+//     }
+// });
 
 //* Si on valide le mot de passe en cliquant sur le bouton
 btnInput.addEventListener('click', function(e) {

@@ -252,7 +252,9 @@ h2 {
 #forgetname, #publierArticle {
     outline: none;
 }
-
+#enregistrerArticle {
+    outline: none;
+}
 input, textarea {
     outline: 1px solid map-get($color, primary);
     border: none;

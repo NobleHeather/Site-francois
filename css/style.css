@@ -130,6 +130,9 @@ h2 > .badge {
 #forgetname, #publierArticle {
   outline: none; }
 
+#enregistrerArticle {
+  outline: none; }
+
 input, textarea {
   outline: 1px solid #413fbd;
   border: none; }

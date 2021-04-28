@@ -65,7 +65,6 @@ function DisplayBlog(json) {
         spans[1].setAttribute('class', 'badge badge--red rounded-pill justify-self-end bg-danger text-white');
         spans[0].setAttribute('class', 'badge rounded-pill justify-self-end bg-primary text-white');
 
-        //! removeChild ok mais pas DeleteArticle
         spans[1].addEventListener('click', function() {
             wrapperBlog.removeChild(newArticle);
             DeleteArticle(json[i]._id);
@@ -114,14 +113,15 @@ let articleInput = document.getElementById('articleInput');
 // articleInput.style.opacity = 0;
 
 //* Ajoute une balise br quand l'utilisateur appuie sur entrée dans le text area
-articleInput.addEventListener('keyup', function(e) {
-    if (e.keyCode === 13) {
-        console.log('KEYUP');
-        // let br = document.createElement('<br/>');
-        articleInput.value = `${articleInput.value}<br />`;
-    }
+//! deprecated
+// articleInput.addEventListener('keyup', function(e) {
+//     if (e.keyCode === 13) {
+//         console.log('KEYUP');
+//         // let br = document.createElement('<br/>');
+//         articleInput.value = `${articleInput.value}<br />`;
+//     }
 
-})
+// })
 
 
 //* boutons
@@ -143,6 +143,10 @@ function SaveArticle() {
     heatherBlogDiv.style.opacity = '0';
     heatherBlogText.innerHTML = '';
 
+    heatherDivZero.style.opacity = '1';
+    let newIndex = Math.floor(Math.random() * (heatherTab[4].length));
+    heatherTitreTxt.innerHTML = heatherTab[4][newIndex];
+
     let article = {
         title : titleInput.value,
         resume : resumeInput.value,
@@ -161,6 +165,7 @@ function SaveArticle() {
 function AfficheBrouillon(article) {
     console.log('AFFICHE BROUILLON');
 
+    visualisationDiv.innerHTML = '';
     let newArticle = document.createElement("div");
 
     newArticle.setAttribute('class', 'border border-primary p-5 mt-5');
@@ -174,12 +179,16 @@ function AfficheBrouillon(article) {
     visualisationDiv.style.display = "block";
     blogDiv.style.display = "none";
 
+    visualisationDiv.scrollIntoView();
+
     return newArticle;
 }
 
 function ModifierBrouillon(x) {
 
     console.log('MODIFIER BROUILLON');
+
+    wrapperInterface.scrollIntoView();
 
     blogDiv.style.display = "block";
     visualisationDiv.style.display = "none";
@@ -211,6 +220,7 @@ function FormateArticle(articleDiv) {
     console.log('FORMATE ARTICLE');
     
     console.log(articleDiv);
+    articleDiv.setAttribute('class', 'mt-3');
     let p = articleDiv.querySelectorAll('p');
     p[0].setAttribute('class', 'col-8 m-auto text-center mt-2 mb-3');
     p[2].setAttribute('class', 'text-right');
@@ -223,8 +233,9 @@ function DisplayArticle() {
     let article = JSON.parse(localStorage.getItem("article"));
     console.log(article);
     PostArticle(article);
-
+    
     let articleDiv = AfficheBrouillon(article);
+    visualisationDiv.style.display = "none";
     FormateArticle(articleDiv);
     wrapperBlog.appendChild(articleDiv);
 
@@ -252,6 +263,62 @@ const PostArticle = async function(article) {
     })
 }
 
+function ClearForm() {
+    titleInput.value = '';
+    resumeInput.value = '';
+    articleInput.value = '';
+
+    enregistrerArticle.style.display = 'block';
+    publierArticle.style.display = 'none';
+    modifierArticle.style.display = 'none';
+
+    heatherBlogText.innerHTML = `C'est publié${name} ! On en fait un autre ? `;
+    heatherBlogDiv.style.opacity = '1';
+
+    heatherDivZero.style.opacity = '0';
+
+    wrapperInterface.scrollIntoView();
+}
+//! deprecated
+// articleInput.addEventListener('keyup', function(e) {
+//     e.preventDefault();
+//     // heatherPassClear();
+
+//     if (e.keyCode === 13) {
+//         console.log('KEYUP BOLD');
+//         let pass = passInput.value;
+//         console.log(pass);
+
+//         // PostPass(pass);
+//         // ComparePass(pass);
+//     }
+// });
+// window.addEventListener("keydown", function(event) {
+//     const p = document.createElement("p");
+//     p.textContent = `KeyboardEvent: key='${event.key}' | code='${event.code}'`;
+//     document.getElementById("output").appendChild(p);
+//   }, true);
+//   KeyboardEvent: key='*' | code='Backslash'
+//   KeyboardEvent: key='Enter' | code='Enter'
+
+articleInput.addEventListener('keydown', function(e) {
+
+    if (e.key == 'Enter') {
+        articleInput.value = `${articleInput.value}<br/>`
+    } else if (e.key == '+') {
+        articleInput.value = `${articleInput.value}<em>`
+    } else if (e.key == '=') {
+        articleInput.value = `${articleInput.value}</em>`
+    } else if (e.key == 'Control') {
+        articleInput.value = `${articleInput.value}<strong>`
+    } else if (e.key == 'Alt') {
+        articleInput.value = `${articleInput.value}</strong>`
+    } else if (e.key == '$') {
+        articleInput.value = `${articleInput.value}<span>`
+    } else if (e.key == '*') {
+        articleInput.value = `${articleInput.value}</span>`
+    }
+})
 
 enregistrerArticle.addEventListener('click', function(e) {
     e.preventDefault();
@@ -261,7 +328,7 @@ enregistrerArticle.addEventListener('click', function(e) {
         //* On échange les boutons
         publierArticle.style.display = "block";
         enregistrerArticle.style.display = "none";
-        
+
         const article = SaveArticle();
         AfficheBrouillon(article);
     } else {
@@ -279,6 +346,7 @@ publierArticle.addEventListener('click', function(e) {
     e.preventDefault();
 
     DisplayArticle();
+    ClearForm();
 })
 
 
