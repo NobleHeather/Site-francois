@@ -44,16 +44,16 @@ btnInput.addEventListener('click', function(e) {
     ComparePass(pass);
 });
 
-//* A faire une fois pour enregistrer MDP puis désactiver
+//? A faire une fois pour enregistrer MDP puis désactiver
 const PostPass = async function(pass) {
 
     let req = {
-        name: 'Dad',
+        name: 'Usertemp',
         password: pass
     };
 
-    fetch('http://localhost:3000/api/pass', {
-    // fetch('https://memory-piafs.herokuapp.com/api/fiche', {
+    // fetch('http://localhost:3000/api/pass', {
+    fetch('https://site-francois.herokuapp.com/api/pass', {
         method: "POST",
         headers : {
             'Accept' : 'application/json',
@@ -75,13 +75,14 @@ const PostPass = async function(pass) {
 const ComparePass = async function(pass) {
 
     let req = {
-        name: 'Dad',
+        // name: 'Dad', //! a remettre ensuite !
+        name : 'Usertemp',
         password: pass
     };
 
     //* ce truc ok, renvoie 'token'
-    fetch('http://localhost:3000/api/pass/checkpass', {
-    // fetch('https://memory-piafs.herokuapp.com/api/fiche', {
+    // fetch('http://localhost:3000/api/pass/checkpass', {
+    fetch('https://site-francois.herokuapp.com/api/pass/checkpass', {
         method: "POST",
         headers : {
             'Accept' : 'application/json',

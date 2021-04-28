@@ -1,8 +1,8 @@
 // localStorage.clear();
 
 const FetchArticles = async function() {
-    return await fetch('http://localhost:3000/api/article')
-    // return await fetch('https://memory-piafs.herokuapp.com/api/fiche')
+    // return await fetch('http://localhost:3000/api/article')
+    return await fetch('https://site-francois.herokuapp.com/api/article')
     .then(response => response.json())
     .then(json => {
         console.log(json);
@@ -19,7 +19,8 @@ const DeleteArticle = async function(articleId) {
     console.log('DELETE ARTICLE');
 
     console.log(articleId);
-    let thisUrl = `http://localhost:3000/api/article/${articleId}`;
+    // let thisUrl = `http://localhost:3000/api/article/${articleId}`;
+    let thisUrl = `https://site-francois.herokuapp.com/api/article/${articleId}`;
     console.log(thisUrl);
     fetch(thisUrl, {
         method: "DELETE"
@@ -244,8 +245,8 @@ function DisplayArticle() {
 
 const PostArticle = async function(article) {
 
-    fetch('http://localhost:3000/api/article', {
-    // fetch('https://memory-piafs.herokuapp.com/api/fiche', {
+    // fetch('http://localhost:3000/api/article', {
+    fetch('https://site-francois.herokuapp.com/api/article', {
         method: "POST",
         headers : {
             'Accept' : 'application/json',
