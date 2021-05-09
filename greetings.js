@@ -46,4 +46,4 @@ function nameDisplayCheck() {
     }
   }
 
-  document.body.onload = nameDisplayCheck;
+document.body.onload = nameDisplayCheck;

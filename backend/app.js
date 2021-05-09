@@ -1,15 +1,20 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
+const multer = require('./multer-config');
+// const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
 const Article = require('./models/article');
 const Pass = require('./models/pass');
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://NobleHeather:NHOC2021@cluster0.tupk8.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://NobleHeather:NHOC2021@cluster0.tupk8.mongodb.net/blogFrancois?retryWrites=true&w=majority',
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
+// App
 const app = express();
 
 app.use((req, res, next) => {
@@ -21,6 +26,63 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
+app.use('/api/images', express.static(path.join(__dirname, 'images')));
+
+
+app.use('api/images', multer, (req, res, next) => {
+  const imgObject = JSON.parse(req.body.img);
+  console.log(imgObject);
+  delete imgObject._id;
+  const img = new Schema({
+    ...imgObject,
+    imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+  });
+  img.save()
+    .then(() => res.status(201).json({ message: 'Img enregistrée !'}))
+    .catch(error => res.status(400).json({ error }));
+});
+
+// app.post('/upload', upload.single('myImg'), (req, rest) => {
+//     console.log('allo ?');
+//     let img = fs.readFileSync(req.file.path);
+//     let encode_image = img.toString('base64');
+
+//     let finalImg = {
+//         contentType: req.file.mimetype,
+//         image: new Buffer(encode_image, 'base64')
+
+//     };
+//     db.collection('quotes').insertOne(finalImg, (err, result) => {
+//         console.log(result);
+//         if (err) {
+//             return console.log(err);
+//         }
+//     })
+//     upload(req, res, (err) => {
+//         if (err) {
+//             console.error('fail');
+//         } else {
+//             console.log(req.file);
+//         }
+//     });
+// });
+// app.post('/api/images', multer, (req, res, next) => {
+//     const img = req.body.img;
+//     console.log(img);
+//     delete img._id;
+//     const Any = new Schema({ any: {
+//         ...img
+//     } });
+//     // const newImg = new Img({
+//     //   ...img,
+//     //   imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+//     // });
+//     // console.log(newImg);
+//     Any.save()
+//       .then(() => res.status(201).text({ message: 'Image enregistrée !', img : Any}))
+//       .catch(error => res.status(400).json({ error }));
+// });
+
 app.post('/api/article', (req, res, next) => {
     delete req.body._id;
     const article = new Article({
@@ -30,6 +92,7 @@ app.post('/api/article', (req, res, next) => {
       .then(() => res.status(201).json({ message: 'Article enregistré !', article : article}))
       .catch(error => res.status(400).json({ error }));
 });
+
 
 // MDP POST
 app.post('/api/pass', (req, res, next) => {

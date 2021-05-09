@@ -13,7 +13,7 @@
 //         divMDP.style.opacity = 0;
 //     }
 // });
-
+// localStorage.clear();
 ////--------------------------------------------------------------------
 
 //* Salutations personnalisées
@@ -39,6 +39,7 @@ submitBtn.addEventListener('click', function() {
   localStorage.setItem('name', nameInput.value);
   // run nameDisplayCheck() to sort out displaying the personalised greetings and updating the form display
   nameDisplayCheck();
+//   SavePass();
   personalGreeting.style.opacity = 1;
 });
 
@@ -54,6 +55,7 @@ forgetBtn.addEventListener('click', function() {
 // define the nameDisplayCheck() function
 function nameDisplayCheck() {
   // check whether the 'name' data item is stored in web Storage
+//   localStorage.clear();
   if(localStorage.getItem('name')) {
     // If it is, display personalized greeting
     let name = localStorage.getItem('name');
@@ -70,6 +72,8 @@ function nameDisplayCheck() {
     forgetDiv.style.display = 'none';
     rememberDiv.style.display = 'block';
     personalGreeting.display = 'none';
+    // let name = ', dear Anonymus';
+    // localStorage.setItem("name", JSON.stringify(name));
   }
 }
 

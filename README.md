@@ -1,6 +1,6 @@
 <!-- Possible d'ajouter un <br/> quand l'utilisateur clique sur entrée ? YEP -->
 <!-- !! -->
-section html password + link script & script password.js temporairement désactivés
+section html password + link script & script password.js temporairement désactivés + lignes dans heather.js
 <!-- !! -->
 
 <!-- !! -->
@@ -13,7 +13,7 @@ HEROKU : enlever les nodes modules avant de push !
 ---PROBLEMES---
 <!-- Problème avec la fonction DeleteArticle dans interfaceV2.js -->
 Si on actualise la page, on revient sur la page de mot de passe (voir cette histoire de token)
-Verif que Heather ne traite personne de null...
+Verif que Heather ne traite personne de null... + pb d'affichage du nom sur page input mdp
 
 ---A FAIRE---
 cacher heather titre si on a heather help

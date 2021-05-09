@@ -1,16 +1,21 @@
 //* PASSWORD
 
+// let name = JSON.parse(localStorage.getItem("name"));
+// if (!name) {
+//     name = ', dear Anonyme';
+// }
+
 let heatherDivPass = document.querySelector('#motDePasse > div > .heather');
 let heatherText = document.querySelector('#motDePasse > div > .heather > p');
 let heatherSvg = document.querySelector('#motDePasse > div > .heather > svg');
 
 // !! a remettre
-heatherDivPass.style.opacity = '0';
+// heatherDivPass.style.opacity = '0';
 // !!
 
 // !! a supprimer
-// let blogPage = document.getElementById('wrapper');
-// blogPage.style.display = "block";
+let blogPage = document.getElementById('wrapper');
+blogPage.style.display = "block";
 // !! a supprimer
 
 function heatherPassClear() {
@@ -18,8 +23,7 @@ function heatherPassClear() {
     heatherText.innerHTML = 'Cliquez-moi pour avoir de l\'aide';
 }
 
-let name = `, ${localStorage.getItem('name')}` || ', dear Anonyme';
-console.log(name);
+
 let heatherTab = [
     `Le serveur dit 401${name}, vous avez dû faire une faute de frappe`,
     `Le serveur dit 500, c\'est lui qui a un problème${name}, revenez plus tard`,
@@ -58,7 +62,10 @@ function HeatherHelpPass(response) {
     heatherDivPass.style.opacity = '1';
 
     heatherSvg.addEventListener('click', function() {
-
+        // let name = localStorage.getItem('name');
+        // if (!name) {
+        //     name = ', dear Anonyme';
+        // }
         if (passInput.value == '') {
             heatherText.innerHTML = heatherTab[3];
         } else {

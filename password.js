@@ -1,3 +1,15 @@
+// name = `, ${localStorage.getItem('name')}` || ', dear Anonyme';
+// console.log(name);
+// function SavePass() {
+//     let pass = 'password'
+//     localStorage.setItem("pass", JSON.stringify(pass));
+//     pass = JSON.parse(localStorage.getItem("pass"));
+//     // document.location = 'https://nobleheather.github.io/Site-francois/blog.html';
+//     document.location = 'http://127.0.0.1:5500/blog.html';
+//     ComparePass(pass);
+// }
+console.log(name);
+
 let passDiv = document.getElementById('motDePasse');
 let passInput = document.getElementById('enterpass');
 let btnInput = document.getElementById('submitpass');
